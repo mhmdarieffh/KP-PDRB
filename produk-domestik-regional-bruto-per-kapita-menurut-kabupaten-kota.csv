@@ -1,0 +1,323 @@
+bps_kode_provinsi;bps_nama_provinsi;bps_kode_kabupaten_kota;bps_nama_kabupaten_kota;tahun;nilai;satuan
+11;Aceh;1101;Kabupaten Simeulue;2010;13.29;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2010;11.73;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2010;13.93;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2010;12.99;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2010;20.08;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2010;22.5;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2010;25.57;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2010;20.02;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2010;13.97;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2010;18.17;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2010;32.21;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2010;17.65;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2010;17.37;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2010;17.38;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2010;32.6;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2010;18.43;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2010;19.68;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2010;13.19;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2010;44.7;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2010;24.14;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2010;17.44;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2010;52.88;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2010;13.26;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2011;14.05;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2011;12.6;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2011;14.84;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2011;14.01;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2011;20.78;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2011;23.88;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2011;26.23;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2011;20.92;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2011;14.71;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2011;19.16;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2011;34.5;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2011;18.42;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2011;18.63;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2011;17.83;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2011;33.9;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2011;19.32;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2011;20.83;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2011;13.92;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2011;46.86;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2011;25.65;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2011;18.32;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2011;51.45;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2011;13.97;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2012;15.01;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2012;13.4;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2012;15.67;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2012;14.91;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2012;21.38;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2012;25.26;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2012;26.08;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2012;21.99;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2012;15.57;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2012;20.18;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2012;35.53;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2012;18.86;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2012;20;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2012;18.56;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2012;33.87;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2012;19.96;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2012;22.13;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2012;14.7;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2012;49.35;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2012;26.94;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2012;19.31;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2012;51.96;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2012;14.59;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2013;16.15;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2013;14.2;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2013;16.81;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2013;15.9;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2013;21.84;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2013;26.94;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2013;27.18;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2013;23.62;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2013;16.61;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2013;21.28;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2013;35.52;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2013;19.52;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2013;21.23;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2013;19.92;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2013;34.51;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2013;20.74;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2013;23.41;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2013;15.52;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2013;52.5;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2013;28.59;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2013;20.52;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2013;52.28;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2013;15.46;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2014;17.32;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2014;15.03;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2014;17.78;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2014;16.89;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2014;22.02;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2014;28.42;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2014;28.75;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2014;25.09;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2014;17.67;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2014;22.18;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2014;34.8;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2014;20.13;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2014;22.42;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2014;20.75;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2014;35.82;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2014;21.35;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2014;24.72;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2014;16.41;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2014;54.11;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2014;30.29;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2014;21.88;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2014;49.72;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2014;16.29;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2015;18.4;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2015;15.86;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2015;18.8;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2015;17.83;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2015;20.34;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2015;29.96;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2015;30.08;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2015;26.31;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2015;18.77;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2015;23.13;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2015;27.98;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2015;21.1;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2015;23.62;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2015;20.71;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2015;37.24;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2015;22.93;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2015;25.95;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2015;17.47;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2015;57.91;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2015;32.22;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2015;23.36;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2015;39.89;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2015;17.22;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2016;19.63;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2016;16.97;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2016;19.92;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2016;18.99;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2016;20.69;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2016;31.47;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2016;31.25;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2016;27.36;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2016;19.93;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2016;24.18;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2016;28.13;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2016;22.15;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2016;24.96;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2016;21.43;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2016;38.93;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2016;24.15;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2016;27.18;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2016;18.29;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2016;61.99;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2016;34.45;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2016;24.98;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2016;39.6;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2016;18.17;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2017;20.76;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2017;17.8;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2017;20.94;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2017;20.36;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2017;21.7;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2017;32.91;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2017;34.44;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2017;28.45;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2017;21.24;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2017;25.18;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2017;29.05;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2017;23.29;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2017;26.65;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2017;22.71;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2017;40.73;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2017;25.39;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2017;28.05;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2017;19.46;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2017;64.21;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2017;37.45;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2017;26.45;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2017;40.56;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2017;19.5;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2018;22.11;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2018;18.53;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2018;22.11;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2018;21.46;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2018;22.65;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2018;34.43;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2018;37.35;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2018;29.83;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2018;22.53;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2018;26.19;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2018;30.77;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2018;24.54;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2018;27.54;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2018;24.02;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2018;42.11;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2018;26.67;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2018;28.96;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2018;20.5;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2018;66.46;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2018;40.43;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2018;27.96;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2018;41.6;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2018;20.23;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2019;23.49;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2019;19.62;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2019;22.93;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2019;23.01;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2019;23.91;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2019;35.73;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2019;38.56;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2019;31.64;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2019;23.84;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2019;27.78;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2019;31.96;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2019;25.74;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2019;28.1;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2019;25.13;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2019;45.02;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2019;27.72;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2019;30.29;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2019;21.75;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2019;69.25;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2019;44.61;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2019;29.7;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2019;43.56;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2019;21.59;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2020;24.55;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2020;19.23;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2020;23.85;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2020;23;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2020;25.18;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2020;34.41;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2020;40.9;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2020;32.95;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2020;24.78;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2020;30.03;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2020;32.76;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2020;26.07;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2020;27.18;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2020;25.59;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2020;45.63;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2020;28.29;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2020;28.23;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2020;22.17;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2020;73.31;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2020;37.41;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2020;28.49;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2020;47.05;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2020;20;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2021;26.15;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2021;21.13;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2021;25.47;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2021;24.24;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2021;27.4;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2021;36.86;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2021;49.8;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2021;34.24;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2021;25.84;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2021;31.91;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2021;38.08;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2021;27.13;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2021;28.32;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2021;29.83;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2021;53.43;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2021;30.28;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2021;30.62;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2021;22.99;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2021;78.06;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2021;38.42;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2021;30.61;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2021;49.34;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2021;22.83;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2022;28.12;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2022;22.96;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2022;27.21;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2022;25.64;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2022;30.29;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2022;40.17;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2022;62.82;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2022;37.12;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2022;27.98;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2022;34.58;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2022;45.83;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2022;29.38;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2022;29.88;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2022;34.62;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2022;61.75;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2022;32.5;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2022;32.92;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2022;24.54;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2022;83.31;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2022;38.85;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2022;32.7;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2022;52.91;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2022;24.99;Juta Rupiah
+11;Aceh;1101;Kabupaten Simeulue;2023;30.22;Juta Rupiah
+11;Aceh;1102;Kabupaten Aceh Singkil;2023;24.03;Juta Rupiah
+11;Aceh;1103;Kabupaten Aceh Selatan;2023;29.37;Juta Rupiah
+11;Aceh;1104;Kabupaten Aceh Tenggara;2023;27.1;Juta Rupiah
+11;Aceh;1105;Kabupaten Aceh Timur;2023;31.5;Juta Rupiah
+11;Aceh;1106;Kabupaten Aceh Tengah;2023;43.97;Juta Rupiah
+11;Aceh;1107;Kabupaten Aceh Barat;2023;66.28;Juta Rupiah
+11;Aceh;1108;Kabupaten Aceh Besar;2023;40.2;Juta Rupiah
+11;Aceh;1109;Kabupaten Pidie;2023;30.11;Juta Rupiah
+11;Aceh;1110;Kabupaten Bireuen;2023;37.57;Juta Rupiah
+11;Aceh;1111;Kabupaten Aceh Utara;2023;45.56;Juta Rupiah
+11;Aceh;1112;Kabupaten Aceh Barat Daya;2023;31.63;Juta Rupiah
+11;Aceh;1113;Kabupaten Gayo Lues;2023;31.81;Juta Rupiah
+11;Aceh;1114;Kabupaten Aceh Tamiang;2023;35.15;Juta Rupiah
+11;Aceh;1115;Kabupaten Nagan Raya;2023;68.54;Juta Rupiah
+11;Aceh;1116;Kabupaten Aceh Jaya;2023;34.55;Juta Rupiah
+11;Aceh;1117;Kabupaten Bener Meriah;2023;35.55;Juta Rupiah
+11;Aceh;1118;Kabupaten Pidie Jaya;2023;26.46;Juta Rupiah
+11;Aceh;1171;Kota Banda Aceh;2023;90.76;Juta Rupiah
+11;Aceh;1172;Kota Sabang;2023;40.73;Juta Rupiah
+11;Aceh;1173;Kota Langsa;2023;35.19;Juta Rupiah
+11;Aceh;1174;Kota Lhokseumawe;2023;56.6;Juta Rupiah
+11;Aceh;1175;Kota Subulussalam;2023;26.43;Juta Rupiah
