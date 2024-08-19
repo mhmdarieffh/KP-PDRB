@@ -237,49 +237,33 @@ def dashboard_pdrb_per_kapita():
         filtered_data = data.copy()
         selected_fields.remove('Semua Kabupaten/Kota')  # Remove 'Semua Kabupaten/Kota' from the selected list
         
-        # Compute average PDRB per capita for all fields
+        # Compute average PDRB per capita for all fields, including all years
         avg_data = filtered_data.groupby('Tahun').agg({'Nilai': 'mean'}).reset_index()
         avg_data['Nama Kabupaten/Kota'] = 'Rata-Rata Semua Kabupaten/Kota'
         
-        # Combine filtered data with average data
-        combined_data = pd.concat([filtered_data, avg_data], ignore_index=True)
-        
-        # 1. Create chart for all Nama Kabupaten/Kota
-        fig_all = px.line(
-            filtered_data,
-            x='Tahun',
-            y='Nilai',
-            color='Nama Kabupaten/Kota',
-            title='PDRB Perkapita Semua Kabupaten/Kota',
-            labels={'Tahun': 'Tahun', 'Nilai': 'Nilai (Juta)'},
-            markers=True
-        )
-        st.plotly_chart(fig_all)
-        
-        # Explanation for the first chart
+        # 1. Create combined chart for all Nama Kabupaten/Kota (without predictions)
+        fig_combined = go.Figure()
+
+        # Plot historical data
+        for kab_kota in filtered_data['Nama Kabupaten/Kota'].unique():
+            kab_kota_data = filtered_data[filtered_data['Nama Kabupaten/Kota'] == kab_kota]
+            fig_combined.add_trace(go.Scatter(
+                x=kab_kota_data['Tahun'], 
+                y=kab_kota_data['Nilai'], 
+                mode='lines+markers',
+                name=f'{kab_kota} (Historis)'
+            ))
+
+        st.plotly_chart(fig_combined)
+
+        # Explanation for the combined chart
         st.write("""
-        Grafik pertama menampilkan nilai PDRB perkapita untuk semua kabupaten/kota dari tahun ke tahun. Setiap garis pada grafik merepresentasikan kabupaten/kota yang berbeda. Grafik ini memungkinkan Anda untuk membandingkan kinerja dan tren dari berbagai kabupaten/kota sepanjang tahun.
+        Grafik ini menggabungkan data historis nilai PDRB perkapita untuk semua kabupaten/kota. Data ini memberikan gambaran tentang perkembangan ekonomi di Aceh.
         """)
 
-        # 2. Create chart for average PDRB
-        fig_avg = px.line(
-            avg_data,
-            x='Tahun',
-            y='Nilai',
-            title='Rata-Rata PDRB Perkapita Semua Kabupaten/Kota',
-            labels={'Tahun': 'Tahun', 'Nilai': 'Nilai (Juta)'},
-            markers=True
-        )
-        st.plotly_chart(fig_avg)
-
-        # Explanation for the second chart
-        st.write("""
-        Grafik kedua menampilkan nilai rata-rata PDRB perkapita dari semua kabupaten/kota untuk setiap tahun. Garis tunggal pada grafik mewakili PDRB rata-rata, memberikan gambaran umum tentang kinerja ekonomi secara keseluruhan di Aceh. Grafik ini membantu memvisualisasikan tren ekonomi secara keseluruhan.
-        """)
-
-        # 3. Predict and create chart for the next 5 years
+        # 2. Create chart for average PDRB with predictions
         future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
-        future_avg_data = pd.DataFrame()
+        start_year = int(data['Tahun'].max()) - 1
 
         # Train a linear regression model on the average data
         model = LinearRegression()
@@ -289,26 +273,28 @@ def dashboard_pdrb_per_kapita():
 
         # Predict future values
         future_predictions = model.predict(future_years.reshape(-1, 1))
-        future_avg_data = pd.DataFrame({
-            'Nama Kabupaten/Kota': 'Prediksi Rata-Rata',
+        avg_pred_data = pd.DataFrame({
+            'Nama Kabupaten/Kota': 'Prediksi Semua Kabupaten/Kota',
             'Tahun': future_years.astype(str),
             'Nilai': future_predictions
         })
 
-        # Create prediction chart
-        fig_pred = px.line(
-            future_avg_data, 
-            x='Tahun', 
-            y='Nilai', 
-            title='Prediksi Rata-Rata PDRB Per Kapita 5 Tahun Kedepan',
+        # Combine historical and predicted data
+        avg_combined_data = pd.concat([avg_data, avg_pred_data], ignore_index=True)
+
+        fig_avg = px.line(
+            avg_combined_data,
+            x='Tahun',
+            y='Nilai',
+            title='Rata-Rata PDRB Perkapita Semua Kabupaten/Kota',
             labels={'Tahun': 'Tahun', 'Nilai': 'Nilai (Juta)'},
             markers=True
         )
-        st.plotly_chart(fig_pred)
+        st.plotly_chart(fig_avg)
 
-        # Explanation for the third chart
+        # Explanation for the average chart
         st.write("""
-        Grafik ketiga memprediksi nilai rata-rata PDRB perkapita untuk lima tahun mendatang berdasarkan data historis. Grafik ini memberikan perkiraan tentang bagaimana PDRB rata-rata dapat berubah di masa depan.
+        Grafik ini menampilkan nilai rata-rata PDRB perkapita dari semua kabupaten/kota untuk setiap tahun, termasuk prediksi untuk lima tahun ke depan. Garis tunggal pada grafik mewakili PDRB rata-rata dan prediksi, memberikan gambaran umum tentang kinerja ekonomi secara keseluruhan di Aceh.
         """)
 
     else:
@@ -316,76 +302,63 @@ def dashboard_pdrb_per_kapita():
         filtered_data = data[data['Nama Kabupaten/Kota'].isin(selected_fields)]
         combined_data = filtered_data
 
-        # Create line chart using Plotly for historical data
-        fig = px.line(
-            combined_data, 
-            x='Tahun', 
-            y='Nilai', 
-            color='Nama Kabupaten/Kota',
-            title='Perbandingan PDRB Antara Kabupaten/Kota', 
-            labels={'Tahun': 'Tahun', 'Nilai': 'Nilai (Juta)'},
-            markers=True
-        )
+        # Create combined chart for selected fields and predictions
+        fig_combined = go.Figure()
 
-        # Customize hover template
-        fig.update_traces(hovertemplate='Nama Kabupaten/Kota: %{color}<br>Tahun: %{x}<br>Nilai: %{y:.2f} Juta')
+        for kab_kota in selected_fields:
+            # Plot historical data
+            kab_kota_data = combined_data[combined_data['Nama Kabupaten/Kota'] == kab_kota]
+            fig_combined.add_trace(go.Scatter(
+                x=kab_kota_data['Tahun'], 
+                y=kab_kota_data['Nilai'], 
+                mode='lines+markers',
+                name=f'{kab_kota} (Historis)'
+            ))
 
-        # Add axis labels
-        fig.update_layout(xaxis_title="Tahun", yaxis_title="Nilai (Juta)")
-        
-        # Display the Plotly chart
-        st.plotly_chart(fig)
+            # Predict future values for selected fields
+            future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
+            start_year = int(data['Tahun'].max()) - 1
+            field_prediction_data = pd.DataFrame()
 
-        # Explanation for the comparison chart
+            # Train a linear regression model
+            model = LinearRegression()
+            X = kab_kota_data['Tahun'].astype(int).values.reshape(-1, 1)
+            y = kab_kota_data['Nilai'].values
+            model.fit(X, y)
+
+            # Predict future values
+            future_predictions = model.predict(future_years.reshape(-1, 1))
+            field_pred_data = pd.DataFrame({
+                'Nama Kabupaten/Kota': kab_kota,
+                'Tahun': future_years.astype(str),
+                'Nilai': future_predictions
+            })
+
+            # Combine historical and predicted data
+            combined_data_pred = pd.concat([kab_kota_data[kab_kota_data['Tahun'].astype(int) >= start_year], field_pred_data], ignore_index=True)
+
+            fig_combined.add_trace(go.Scatter(
+                x=combined_data_pred['Tahun'], 
+                y=combined_data_pred['Nilai'], 
+                mode='lines+markers',
+                name=f'{kab_kota} (Prediksi)',
+                line=dict(dash='dash')
+            ))
+
+        st.plotly_chart(fig_combined)
+
+        # Explanation for the combined chart
         st.write("""
-        Grafik ini membandingkan nilai PDRB Perkapita dari kabupaten/kota terpilih selama beberapa tahun. Grafik ini berguna untuk menganalisis kabupaten/kota tertentu dan kinerjanya relatif satu sama lain.
-        """)
-
-        # Predict the next 5 years for selected fields
-        future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
-        prediction_data = pd.DataFrame()
-
-        for field in selected_fields:
-            field_data = combined_data[combined_data['Nama Kabupaten/Kota'] == field]
-
-            if len(field_data) > 0:
-                # Train a linear regression model
-                model = LinearRegression()
-                X = field_data['Tahun'].astype(int).values.reshape(-1, 1)
-                y = field_data['Nilai'].values
-                model.fit(X, y)
-
-                # Predict future values
-                future_predictions = model.predict(future_years.reshape(-1, 1))
-                field_prediction_data = pd.DataFrame({
-                    'Nama Kabupaten/Kota': field,
-                    'Tahun': future_years.astype(str),
-                    'Nilai': future_predictions
-                })
-
-                prediction_data = pd.concat([prediction_data, field_prediction_data], ignore_index=True)
-
-        # Create prediction chart
-        fig_pred = px.line(
-            prediction_data, 
-            x='Tahun', 
-            y='Nilai', 
-            color='Nama Kabupaten/Kota',
-            title='Prediksi PDRB Per Kapita 5 Tahun Kedepan',
-            labels={'Tahun': 'Tahun', 'Nilai': 'Nilai (Juta)'},
-            markers=True
-        )
-        st.plotly_chart(fig_pred)
-
-        # Explanation for the prediction chart
-        st.write("""
-        Grafik ini memprediksi nilai PDRB Perkapita dari kabupaten/kota yang dipilih selama lima tahun mendatang. Prediksi ini didasarkan pada tren historis dan membantu memperkirakan bagaimana PDRB kabupaten/kota tertentu mungkin berkembang di masa depan.
+        Grafik ini menggabungkan data historis dan prediksi nilai PDRB perkapita dari kabupaten/kota yang dipilih. Data prediksi dimulai dari dua tahun sebelum data akhir dan diperpanjang hingga lima tahun ke depan.
         """)
 
             
 def dashboard_pdrb_adhb_aceh():
     # Load the data
     data = pd.read_csv('pdrb-adhb-aceh-tahun-2010-2023.csv', delimiter=';')
+
+    # Convert the 'tahun' column to string to avoid automatic formatting with commas
+    data['tahun'] = data['tahun'].astype(str)
 
     # Convert the 'tahun' column to string to avoid automatic formatting with commas
     data['tahun'] = data['tahun'].astype(str)
@@ -456,49 +429,33 @@ def dashboard_pdrb_adhb_aceh():
         filtered_data = data.copy()
         selected_fields.remove('Semua Lapangan Usaha')  # Remove 'Semua Lapangan Usaha' from the selected list
         
-        # Compute average PDRB per capita for all fields
+        # Compute average PDRB per capita for all fields, including all years
         avg_data = filtered_data.groupby('Tahun').agg({'Nilai PDRB': 'mean'}).reset_index()
         avg_data['Lapangan Usaha'] = 'Rata-Rata Semua Lapangan Usaha'
         
-        # Combine filtered data with average data
-        combined_data = pd.concat([filtered_data, avg_data], ignore_index=True)
-        
-        # 1. Create chart for all Lapangan Usaha
-        fig_all = px.line(
-            filtered_data,
-            x='Tahun',
-            y='Nilai PDRB',
-            color='Lapangan Usaha',
-            title='PDRB Semua Lapangan Usaha',
-            labels={'Tahun': 'Tahun', 'Nilai PDRB': 'Nilai (Miliar)'},
-            markers=True
-        )
-        st.plotly_chart(fig_all)
-        
-        # Explanation for the first chart
+        # 1. Create combined chart for all Lapangan Usaha (without predictions)
+        fig_combined = go.Figure()
+
+        # Plot historical data
+        for lapangan_usaha in filtered_data['Lapangan Usaha'].unique():
+            lapangan_usaha_data = filtered_data[filtered_data['Lapangan Usaha'] == lapangan_usaha]
+            fig_combined.add_trace(go.Scatter(
+                x=lapangan_usaha_data['Tahun'], 
+                y=lapangan_usaha_data['Nilai PDRB'], 
+                mode='lines+markers',
+                name=f'{lapangan_usaha} (Historis)'
+            ))
+
+        st.plotly_chart(fig_combined)
+
+        # Explanation for the combined chart
         st.write("""
-        Grafik pertama menampilkan nilai PDRB Perkapita untuk semua sektor (Lapangan Usaha) dari tahun ke tahun. Setiap garis pada grafik merepresentasikan sektor ekonomi yang berbeda. Grafik ini memungkinkan Anda untuk membandingkan kinerja dan tren dari berbagai sektor ekonomi sepanjang tahun.
+        Grafik ini menggabungkan data historis nilai PDRB ADHB untuk semua lapangan usaha. Data ini memberikan gambaran tentang perkembangan ekonomi di Aceh.
         """)
 
-        # 2. Create chart for average PDRB
-        fig_avg = px.line(
-            avg_data,
-            x='Tahun',
-            y='Nilai PDRB',
-            title='Rata-Rata PDRB Semua Lapangan Usaha',
-            labels={'Tahun': 'Tahun', 'Nilai PDRB': 'Nilai (Miliar)'},
-            markers=True
-        )
-        st.plotly_chart(fig_avg)
-
-        # Explanation for the second chart
-        st.write("""
-        Grafik kedua menampilkan nilai rata-rata PDRB Perkapita dari semua sektor untuk setiap tahun. Garis tunggal pada grafik mewakili PDRB rata-rata, memberikan gambaran umum tentang kinerja ekonomi secara keseluruhan di Aceh. Grafik ini membantu memvisualisasikan tren ekonomi secara keseluruhan.
-        """)
-
-        # 3. Predict and create chart for the next 5 years
+        # 2. Create chart for average PDRB with predictions
         future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
-        future_avg_data = pd.DataFrame()
+        start_year = int(data['Tahun'].max()) - 1
 
         # Train a linear regression model on the average data
         model = LinearRegression()
@@ -508,26 +465,28 @@ def dashboard_pdrb_adhb_aceh():
 
         # Predict future values
         future_predictions = model.predict(future_years.reshape(-1, 1))
-        future_avg_data = pd.DataFrame({
-            'Lapangan Usaha': 'Prediksi Rata-Rata',
+        avg_pred_data = pd.DataFrame({
+            'Lapangan Usaha': 'Prediksi Semua Lapangan Usaha',
             'Tahun': future_years.astype(str),
-            'Nilai': future_predictions
+            'Nilai PDRB': future_predictions
         })
 
-        # Create prediction chart
-        fig_pred = px.line(
-            future_avg_data, 
-            x='Tahun', 
-            y='Nilai', 
-            title='Prediksi Rata-Rata PDRB Per Kapita 5 Tahun Kedepan',
-            labels={'Tahun': 'Tahun', 'Nilai PDRB Per Kapita': 'Nilai (Miliar)'},
+        # Combine historical and predicted data
+        avg_combined_data = pd.concat([avg_data, avg_pred_data], ignore_index=True)
+
+        fig_avg = px.line(
+            avg_combined_data,
+            x='Tahun',
+            y='Nilai PDRB',
+            title='Rata-Rata PDRB ADHB Semua Lapangan Usaha',
+            labels={'Tahun': 'Tahun', 'Nilai PDRB': 'Nilai (Juta)'},
             markers=True
         )
-        st.plotly_chart(fig_pred)
+        st.plotly_chart(fig_avg)
 
-        # Explanation for the third chart
+        # Explanation for the average chart
         st.write("""
-        Grafik ketiga memprediksi nilai rata-rata PDRB untuk lima tahun mendatang berdasarkan data historis. Grafik ini memberikan perkiraan tentang bagaimana PDRB rata-rata dapat berubah di masa depan.
+        Grafik ini menampilkan nilai rata-rata PDRB ADHB dari semua lapangan usaha untuk setiap tahun, termasuk prediksi untuk lima tahun ke depan. Garis tunggal pada grafik mewakili PDRB rata-rata dan prediksi, memberikan gambaran umum tentang kinerja ekonomi secara keseluruhan di Aceh.
         """)
 
     else:
@@ -535,70 +494,54 @@ def dashboard_pdrb_adhb_aceh():
         filtered_data = data[data['Lapangan Usaha'].isin(selected_fields)]
         combined_data = filtered_data
 
-        # Create line chart using Plotly for historical data
-        fig = px.line(
-            combined_data, 
-            x='Tahun', 
-            y='Nilai PDRB', 
-            color='Lapangan Usaha',
-            title='Perbandingan PDRB Antara Lapangan Usaha', 
-            labels={'Tahun': 'Tahun', 'Nilai PDRB Per Kapita': 'Nilai (Miliar)'},
-            markers=True
-        )
+        # Create combined chart for selected fields and predictions
+        fig_combined = go.Figure()
 
-        # Customize hover template
-        fig.update_traces(hovertemplate='Lapangan Usaha: %{color}<br>Tahun: %{x}<br>Nilai PDRB: %{y:.2f} Miliar')
+        for lapangan_usaha in selected_fields:
+            # Plot historical data
+            lapangan_usaha_data = combined_data[combined_data['Lapangan Usaha'] == lapangan_usaha]
+            fig_combined.add_trace(go.Scatter(
+                x=lapangan_usaha_data['Tahun'], 
+                y=lapangan_usaha_data['Nilai PDRB'], 
+                mode='lines+markers',
+                name=f'{lapangan_usaha} (Historis)'
+            ))
 
-        # Add axis labels
-        fig.update_layout(xaxis_title="Tahun", yaxis_title="Nilai PDRB(Miliar)")
-        
-        # Display the Plotly chart
-        st.plotly_chart(fig)
+            # Predict future values for selected fields
+            future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
+            start_year = int(data['Tahun'].max()) - 1
+            field_prediction_data = pd.DataFrame()
 
-        # Explanation for the comparison chart
+            # Train a linear regression model
+            model = LinearRegression()
+            X = lapangan_usaha_data['Tahun'].astype(int).values.reshape(-1, 1)
+            y = lapangan_usaha_data['Nilai PDRB'].values
+            model.fit(X, y)
+
+            # Predict future values
+            future_predictions = model.predict(future_years.reshape(-1, 1))
+            field_pred_data = pd.DataFrame({
+                'Lapangan Usaha': lapangan_usaha,
+                'Tahun': future_years.astype(str),
+                'Nilai PDRB': future_predictions
+            })
+
+            # Combine historical and predicted data
+            combined_data_pred = pd.concat([lapangan_usaha_data[lapangan_usaha_data['Tahun'].astype(int) >= start_year], field_pred_data], ignore_index=True)
+
+            fig_combined.add_trace(go.Scatter(
+                x=combined_data_pred['Tahun'], 
+                y=combined_data_pred['Nilai PDRB'], 
+                mode='lines+markers',
+                name=f'{lapangan_usaha} (Prediksi)',
+                line=dict(dash='dash')
+            ))
+
+        st.plotly_chart(fig_combined)
+
+        # Explanation for the combined chart
         st.write("""
-        Grafik ini membandingkan nilai PDRB dari sektor-sektor terpilih selama beberapa tahun. Grafik ini berguna untuk menganalisis sektor-sektor tertentu dan kinerjanya relatif satu sama lain.
-        """)
-
-        # Predict the next 5 years for selected fields
-        future_years = np.arange(int(data['Tahun'].max()) + 1, int(data['Tahun'].max()) + 6)
-        prediction_data = pd.DataFrame()
-
-        for field in selected_fields:
-            field_data = combined_data[combined_data['Lapangan Usaha'] == field]
-
-            if len(field_data) > 0:
-                # Train a linear regression model
-                model = LinearRegression()
-                X = field_data['Tahun'].astype(int).values.reshape(-1, 1)
-                y = field_data['Nilai PDRB'].values
-                model.fit(X, y)
-
-                # Predict future values
-                future_predictions = model.predict(future_years.reshape(-1, 1))
-                field_prediction_data = pd.DataFrame({
-                    'Lapangan Usaha': field,
-                    'Tahun': future_years.astype(str),
-                    'Nilai PDRB': future_predictions
-                })
-
-                prediction_data = pd.concat([prediction_data, field_prediction_data], ignore_index=True)
-
-        # Create prediction chart
-        fig_pred = px.line(
-            prediction_data, 
-            x='Tahun', 
-            y='Nilai PDRB', 
-            color='Lapangan Usaha',
-            title='Prediksi PDRB Per Kapita 5 Tahun Kedepan',
-            labels={'Tahun': 'Tahun', 'Nilai PDRB Per Kapita': 'Nilai (Miliar)'},
-            markers=True
-        )
-        st.plotly_chart(fig_pred)
-
-        # Explanation for the prediction chart
-        st.write("""
-        Grafik ini memprediksi nilai PDRB untuk lima tahun mendatang bagi sektor-sektor terpilih. Grafik ini berguna untuk mengidentifikasi kemungkinan tren pertumbuhan atau penurunan dalam sektor-sektor tertentu.
+        Grafik ini menggabungkan data historis dan prediksi nilai PDRB ADHB dari lapangan usaha yang dipilih. Data prediksi dimulai dari dua tahun sebelum data akhir dan diperpanjang hingga lima tahun ke depan.
         """)
          
 # Sidebar untuk memilih dashboard
