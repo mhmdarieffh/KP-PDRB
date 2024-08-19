@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 import numpy as np
+import plotly.graph_objects as go
 
 def dashboard_pertumbuhan_pdrb():
     # Memuat dan membersihkan data
@@ -26,89 +28,141 @@ def dashboard_pertumbuhan_pdrb():
     # Judul Aplikasi Streamlit dan Deskripsi
     st.title("Laju Pertumbuhan PDRB Aceh dan Prediksi 5 Tahun Ke Depan")
     st.markdown("""
-    Salah satu indikator penting untuk mengetahui kondisi ekonomi di suatu negara dalam suatu periode tertentu adalah data Produk Domestik Regional Bruto (PDRB), baik atas dasar harga berlaku maupun atas dasar harga konstan. PDRB pada dasarnya merupakan jumlah nilai tambah yang dihasilkan oleh seluruh unit usaha dalam suatu negara tertentu, atau merupakan jumlah nilai barang dan jasa akhir yang dihasilkan oleh seluruh unit ekonomi. PDRB atas dasar harga berlaku menggambarkan nilai tambah barang dan jasa yang dihitung menggunakan harga yang berlaku pada setiap tahun. PDRB atas dasar harga berlaku dapat digunakan untuk melihat pergeseran dan struktur ekonomi.""")
-
-    # Filter data berdasarkan rentang tahun yang dipilih
-    year_range = (int(data['tahun'].min()), int(data['tahun'].max()))
-    filtered_data = data[(data['tahun'] >= year_range[0]) & (data['tahun'] <= year_range[1])]
-
-    # Mengonversi 'tahun' menjadi string untuk mencegah adanya tanda koma
-    filtered_data['tahun'] = filtered_data['tahun'].astype(str)
-
-    # Metrik Utama
-    average_growth = filtered_data['Laju pertumbuhan Ekonomi'].mean()
-    st.metric("Rata-rata Laju Pertumbuhan", f"{average_growth:.2f}%")
-
-    # Grafik Garis untuk Pertumbuhan Ekonomi menggunakan Plotly dengan template hover kustom
-    st.write("### Laju Pertumbuhan Ekonomi Seiring Waktu")
-    fig = px.line(filtered_data, x='tahun', y='Laju pertumbuhan Ekonomi', markers=True,
-                  title="Laju Pertumbuhan Ekonomi Seiring Waktu")
-
-    # Mengustomisasi template hover untuk menunjukkan persentase dan perbedaan tahunan
-    fig.update_traces(hovertemplate=(
-        'Tahun: %{x}<br>'
-        'Laju Pertumbuhan: %{y:.2f}%<br>'
-        'Perbedaan dari Tahun Lalu: %{customdata:.2f}%'
-    ))
-
-    fig.update_layout(xaxis_title="Tahun", yaxis_title="Laju Pertumbuhan (%)")
-    
-    # Menambahkan custom data untuk hover
-    fig.update_traces(customdata=filtered_data['Perbedaan (%)'])
-
-    st.plotly_chart(fig)
-    
-    # Penjelasan setelah grafik pertama
-    st.markdown("""
-    Grafik pertama menampilkan laju pertumbuhan ekonomi tahunan dari tahun 2015 hingga 2023. Dalam periode ini, laju pertumbuhan ekonomi mengalami beberapa fluktuasi signifikan. Dimulai dari level yang lebih rendah pada tahun 2015, pertumbuhan ekonomi secara bertahap meningkat dan mencapai puncaknya sekitar 4% pada tahun 2018. Namun, terjadi penurunan tajam pada tahun 2020, yang kemungkinan besar dipengaruhi oleh pandemi COVID-19. Setelah itu, ekonomi kembali pulih dan menunjukkan stabilitas, dengan laju pertumbuhan berkisar di angka 4% pada tahun 2022 dan 2023.
+    Salah satu indikator penting untuk mengetahui kondisi ekonomi di suatu negara dalam suatu periode tertentu adalah data Produk Domestik Regional Bruto (PDRB), baik atas dasar harga berlaku maupun atas dasar harga konstan. PDRB pada dasarnya merupakan jumlah nilai tambah yang dihasilkan oleh seluruh unit usaha dalam suatu negara tertentu, atau merupakan jumlah nilai barang dan jasa akhir yang dihasilkan oleh seluruh unit ekonomi. PDRB atas dasar harga berlaku menggambarkan nilai tambah barang dan jasa yang dihitung menggunakan harga yang berlaku pada setiap tahun. PDRB atas dasar harga berlaku dapat digunakan untuk melihat pergeseran dan struktur ekonomi.
     """)
 
-    # Model Regresi Linier untuk Prediksi
+    # Grafik 1: Menggunakan Model dengan Data Splitting
     X = np.array(data['tahun']).reshape(-1, 1)
     y = data['Laju pertumbuhan Ekonomi']
 
+    # Membagi data menjadi 80% training dan 20% testing
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Membuat model regresi linier menggunakan data training
     model = LinearRegression()
-    model.fit(X, y)
+    model.fit(X_train, y_train)
 
-    # Prediksi untuk 5 tahun ke depan
+    # Prediksi untuk 2 tahun terakhir + 5 tahun ke depan
+    last_two_years = np.arange(data['tahun'].max() - 2, data['tahun'].max() + 1).reshape(-1, 1)
     future_years = np.arange(data['tahun'].max() + 1, data['tahun'].max() + 6).reshape(-1, 1)
-    future_predictions = model.predict(future_years)
+    all_years = np.concatenate((last_two_years, future_years), axis=0)
+    predictions = model.predict(all_years)
 
-    # Membuat DataFrame prediksi
+    # Membuat DataFrame untuk data prediksi
     prediction_df = pd.DataFrame({
-        'tahun': future_years.flatten(),
-        'Laju pertumbuhan Ekonomi': future_predictions
+        'tahun': all_years.flatten(),
+        'Laju pertumbuhan Ekonomi': predictions
     })
 
-    # Menghitung perbedaan persentase tahunan pada data prediksi
-    prediction_df['Perbedaan (%)'] = prediction_df['Laju pertumbuhan Ekonomi'].diff()
+    # Grafik Garis untuk Data Historis dan Prediksi (Train-Test Split)
+    st.write("### Grafik 1: Data Historis dan Prediksi dengan Train-Test Split")
+    fig1 = go.Figure()
 
-    # Menampilkan data prediksi
-    st.write("### Prediksi Laju Pertumbuhan Ekonomi 5 Tahun Kedepan")
-    fig = px.line(prediction_df, x='tahun', y='Laju pertumbuhan Ekonomi', markers=True,
-                title="Prediksi Laju Pertumbuhan Ekonomi 5 Tahun Kedepan")
-
-    fig.update_traces(hovertemplate=(
-        'Tahun: %{x}<br>'
-        'Laju Pertumbuhan: %{y:.2f}%<br>'
-        'Perbedaan dari Tahun Lalu: %{customdata:.2f}%'
+    # Garis untuk data historis
+    fig1.add_trace(go.Scatter(
+        x=data['tahun'],
+        y=data['Laju pertumbuhan Ekonomi'],
+        mode='lines+markers',
+        name='Data Historis',
+        line=dict(color='blue'),
+        hovertemplate=(
+            'Tahun: %{x}<br>'
+            'Laju Pertumbuhan: %{y:.2f}%'
+        )
     ))
 
-    # Menambahkan custom data untuk hover
-    fig.update_traces(customdata=prediction_df['Perbedaan (%)'])
+    # Garis untuk data prediksi (Train-Test Split)
+    fig1.add_trace(go.Scatter(
+        x=prediction_df['tahun'],
+        y=prediction_df['Laju pertumbuhan Ekonomi'],
+        mode='lines+markers',
+        name='Prediksi (Train-Test Split)',
+        line=dict(color='red'),
+        hovertemplate=(
+            'Tahun: %{x}<br>'
+            'Laju Pertumbuhan: %{y:.2f}%'
+        )
+    ))
 
-    # Mengatur x-axis
-    fig.update_xaxes(tickformat='.0f', tickvals=prediction_df['tahun'].unique())
+    fig1.update_layout(
+        title="Grafik 1: Data Historis dan Prediksi (Train-Test Split)",
+        xaxis_title="Tahun",
+        yaxis_title="Laju Pertumbuhan (%)",
+        xaxis=dict(tickformat='.0f')
+    )
 
-    fig.update_layout(xaxis_title="Tahun", yaxis_title="Laju Pertumbuhan (%)")
+    st.plotly_chart(fig1)
 
-    st.plotly_chart(fig)
-    
-    # Penjelasan setelah grafik kedua
+    # Penjelasan Setelah Grafik 1
     st.markdown("""
-    Grafik kedua memvisualisasikan prediksi laju pertumbuhan ekonomi untuk lima tahun ke depan, dari tahun 2024 hingga 2028. Berdasarkan prediksi ini, laju pertumbuhan ekonomi diperkirakan akan mengalami peningkatan yang stabil. Pada tahun 2024, laju pertumbuhan diperkirakan berada di sekitar 4,2% dan terus meningkat setiap tahunnya hingga mencapai 5,2% pada tahun 2028. Grafik ini mencerminkan ekspektasi positif terhadap perkembangan ekonomi di masa depan, dengan proyeksi pertumbuhan yang terus meningkat dalam lima tahun mendatang.
+    Grafik pertama menunjukkan prediksi laju pertumbuhan ekonomi berdasarkan model yang dilatih menggunakan metode *train-test split*. 
+    Metode ini membagi data menjadi 80% data latih dan 20% data uji, sehingga prediksi ini menggambarkan kemampuan model dalam 
+    memprediksi data yang tidak terlihat sebelumnya. Hasil prediksi mencakup dua tahun terakhir dari data historis dan lima tahun ke depan.
     """)
 
+    # Grafik 2: Prediksi Berdasarkan Data Historis Saja
+    model_full = LinearRegression()
+    model_full.fit(X, y)
+
+    # Membuat data prediksi: 2 tahun terakhir + 5 tahun ke depan
+    last_two_years = np.arange(data['tahun'].max() - 2, data['tahun'].max() + 1).reshape(-1, 1)
+    future_years = np.arange(data['tahun'].max() + 1, data['tahun'].max() + 6).reshape(-1, 1)
+    all_years = np.concatenate((last_two_years, future_years), axis=0)
+
+    # Prediksi berdasarkan model
+    predictions_full = model_full.predict(all_years)
+
+    # Membuat DataFrame untuk data prediksi
+    prediction_df_full = pd.DataFrame({
+        'tahun': all_years.flatten(),
+        'Laju pertumbuhan Ekonomi': predictions_full
+    })
+
+    # Grafik Garis untuk Data Historis dan Prediksi (Data Historis Saja)
+    st.write("### Grafik 2: Data Historis dan Prediksi Berdasarkan Semua Data Historisa")
+    fig2 = go.Figure()
+
+    # Garis untuk data historis
+    fig2.add_trace(go.Scatter(
+        x=data['tahun'],
+        y=data['Laju pertumbuhan Ekonomi'],
+        mode='lines+markers',
+        name='Data Historis',
+        line=dict(color='blue'),
+        hovertemplate=(
+            'Tahun: %{x}<br>'
+            'Laju Pertumbuhan: %{y:.2f}%'
+        )
+    ))
+
+    # Garis untuk data prediksi (Histori Saja)
+    fig2.add_trace(go.Scatter(
+        x=prediction_df_full['tahun'],
+        y=prediction_df_full['Laju pertumbuhan Ekonomi'],
+        mode='lines+markers',
+        name='Prediksi (Histori Saja)',
+        line=dict(color='green'),
+        hovertemplate=(
+            'Tahun: %{x}<br>'
+            'Laju Pertumbuhan: %{y:.2f}%'
+        )
+    ))
+
+    fig2.update_layout(
+        title="Grafik 2: Data Historis dan Prediksi Berdasarkan Semua data Historis",
+        xaxis_title="Tahun",
+        yaxis_title="Laju Pertumbuhan (%)",
+        xaxis=dict(tickformat='.0f')
+    )
+
+    st.plotly_chart(fig2)
+
+    # Penjelasan Setelah Grafik 2
+    st.markdown("""
+    Grafik kedua menunjukkan prediksi laju pertumbuhan ekonomi yang dibuat dengan menggunakan seluruh data historis tanpa pembagian data (tanpa split). 
+    Dengan menggunakan seluruh data untuk melatih model, hasil prediksi ini lebih linier dan mulus karena tidak ada data yang disisihkan untuk pengujian. 
+    Prediksi ini juga mencakup dua tahun terakhir dari data historis dan lima tahun ke depan, memberikan gambaran yang konsisten berdasarkan data masa lalu.
+    """)
 
 def dashboard_pdrb_per_kapita():
     # Load the data
